@@ -6,7 +6,7 @@ from sqlalchemy.ext.automap import automap_base
 from sqlalchemy.orm import Session
 from sqlalchemy import create_engine, func
 from flask import Flask, jsonify
-import app
+
 
 # set up the database
 engine = create_engine("sqlite:///hawaii.sqlite")
@@ -19,7 +19,6 @@ session = Session(engine)
 # set up Flask
 app = Flask(__name__)
 
-print("example __name__ = %s", __name__)
 
 @app.route("/")
 def welcome():
@@ -75,6 +74,4 @@ def stats(start=None, end=None):
     
 
 if __name__ == "__main__":
-    print("example is being run directly.")
-else:
-    print("example is being imported")
+   app.run()
