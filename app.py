@@ -1,11 +1,17 @@
 import datetime as dt
 import numpy as np
 import pandas as pd
+import os
 import sqlalchemy
 from sqlalchemy.ext.automap import automap_base
 from sqlalchemy.orm import Session
 from sqlalchemy import create_engine, func
 from flask import Flask, jsonify
+
+# set path to relative location
+print(os.getcwd())
+os.chdir(os.path.dirname(os.path.abspath(__file__)))
+print(os.getcwd())
 
 # set up the database
 engine = create_engine("sqlite:///hawaii.sqlite", connect_args={'check_same_thread': False})
@@ -71,5 +77,7 @@ def stats(start=None, end=None):
     return jsonify(temps)
     
 
-if __name__ == "__main__":
-   app.run()
+if __name__=="__main__":
+    # app.run(debug=true) [let you debug]
+    app.run(debug = True)
+    # app.run() [for users]
